@@ -1,0 +1,13 @@
+== Test Banking application using Hexagonal Architecture
+Reference: https://www.udemy.com/course/rest-based-microservices-api-development-in-go-lang/
+
+== Running application
+
+Makefile was created to run the application. The following commands are available:
+
+```bash
+make run
+```
+
+Following a Tutorial on Hexagonal architecture using golang
+
