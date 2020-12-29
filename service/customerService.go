@@ -7,11 +7,18 @@ type CustomerService interface {
 	GetAllCustomer() ([]domain.Customer, error)
 }
 
-// DefaultCustomerService : Business domain repository dependency
+// DefaultCustomerService : This is the Business Logic Domain
+// Impletments Service Interface and has a dependency on the Repository
 type DefaultCustomerService struct {
 	repo domain.CustomerRepository
 }
 
+// GetAllCustomer : Receiver function for getAllCutomers
 func (s DefaultCustomerService) GetAllCustomer() ([]domain.Customer, error) {
 	return s.repo.FindAll()
+}
+
+// NewCustomerService : factory helper funvyin to create default Customer REST Service
+func NewCustomerService(repository domain.CustomerRepository) DefaultCustomerService {
+	return DefaultCustomerService{repository}
 }

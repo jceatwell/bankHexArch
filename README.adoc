@@ -11,3 +11,23 @@ make run
 
 Following a Tutorial on Hexagonal architecture using golang
 
+== Creating Initial Application
+
+== Steps
+1. Start at the Domain (domain.customer) and create interface
+2. Introduce the "CustomerRepository interface"
+3. Introduce the Adaptor (Stub) "CustomerRepository"
+4. Create the Service Port ("CustomerService interface") + Default implementation
+5. Create a Customer Hndler with a Customer Service
+6. Finally wire up application in app.go (Define Handler with service aand adaptor)
+
+=== Testing
+
+```bash
+curl --location --request GET 'localhost:8080/customers' \
+--header 'Content-Type: application/xml'
+
+curl --location --request GET 'localhost:8080/customers' \
+--header 'Content-Type: application/json' | jq
+```
+
