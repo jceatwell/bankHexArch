@@ -1,0 +1,157 @@
+== Banking Application Routing
+
+Incoming Request -> Request Multiplexer / Router -> Greet Route
+                                                 -> Customer Route
+
+== Basic Server to Serve XML
+
+The following will serve xml on  localhost:8080/customers
+```
+package main
+
+import (
+	"encoding/xml"
+	"net/http"
+)
+
+// Customers are support structure for data returned
+type Customers struct {
+	ID   int    `xml:"id,attr"`
+	Name string `xml:"name"`
+	City string `xml:"city"`
+}
+
+func main() {
+	http.HandleFunc("/customers", customersHandler)
+	http.ListenAndServe(":8080", nil)
+}
+
+func customersHandler(rw http.ResponseWriter, r *http.Request) {
+	customers := []Customers{
+		{1, "John", "Port Elizabeth"},
+		{2, "Dave", "Cape Town"},
+	}
+	customersList := struct {
+		XMLName   xml.Name     `xml:"customers"`
+		Customers *[]Customers `xml:"customer"`
+	}{Customers: &customers}
+
+	rw.Header().Add("Content-Type", "application/xml")
+	xml.NewEncoder(rw).Encode(customersList)
+}
+```
+
+== Extact Request Header
+
+Use: r.Header.Get("Content-Type")
+
+```
+func getAllCustomers(w http.ResponseWriter, r *http.Request) {
+	customers := []Customer{
+		{1, "John", "Port Elizabeth", "1234"},
+		{2, "Rob", "Durban", "12222"},
+	}
+
+	if r.Header.Get("Content-Type") == "application/xml" {
+		w.Header().Add("Content-Type", "application/xml")
+		customerList := struct {
+			XMLName   xml.Name    `xml:"customers"`
+			Customers *[]Customer `xml:"list>customer"`
+		}{Customers: &customers}
+
+		xml.NewEncoder(w).Encode(customerList)
+	} else {
+		w.Header().Add("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(customers)
+	}
+}
+```
+
+== Defining packages and Go Mod
+
+Create a go.mod file and define the root package
+
+```
+go mod init github.com/jceatwell/bankHexArch
+```
+
+To create packages, create folders and update the "package" section at the top of each file with that name.
+
+Note in this file we have defined our own multiplexer, rather than use the default one (This file location is ./app/app.go)
+```
+package app
+
+import (
+	"log"
+	"net/http"
+)
+
+// Start starts the Server listening in at port 8080
+func Start() {
+
+	// Define a Multiplexer
+	mux := http.NewServeMux()
+
+	// This uses the default multiplexer
+	mux.HandleFunc("/greet", greetHandler)
+	mux.HandleFunc("/customers", getAllCustomers)
+
+	// Start server
+	log.Fatal(http.ListenAndServe(":8080", mux))
+}
+```
+
+In the main file use an import statement with the base location above and append on the folder name for the files required, e.g:
+
+```
+package main
+
+import "github.com/jceatwell/bankHexArch/app"
+
+func main() {
+	app.Start()
+}
+```
+
+== Gorilla / Mux
+
+To import add (underscore prevents removal of import on save)
+
+```
+import (
+    ...
+    _ "github.com/gorilla/mux"
+    ...
+)
+```
+
+To use the Router:
+
+```
+    router = mux.NewRouter()
+    
+    router.HandleFunc("/greet", greet)
+
+    log.Fatal(http.ListenAndServe(":8080", router))
+```
+
+== Extract Keys
+
+```
+func getCustomer(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+
+	keys := make([]string, len(vars))
+	for key := range vars {
+		keys = append(keys, key)
+	}
+	log.Printf(strings.Join(keys, ","))
+	fmt.Fprintf(w, vars["customer_id"])
+}
+```
+
+== Router expressions
+
+```
+router.HandleFunc("/customers/{customer_id:[0-9]+})
+```
