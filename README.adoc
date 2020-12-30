@@ -1,5 +1,4 @@
 == Test Banking application using Hexagonal Architecture
-Reference: https://www.udemy.com/course/rest-based-microservices-api-development-in-go-lang/
 
 == Running application
 
@@ -13,9 +12,11 @@ Following a Tutorial on Hexagonal architecture using golang
 
 == Creating Initial Application
 
-== Steps
+.Overview Of initial design
+image::docs/Hexagonal Architecture Implemetation.png[Hexarch,800]
+
 1. Start at the Domain (domain.customer) and create interface
-2. Introduce the "CustomerRepository interface"
+2. Introduce the "CustomerRepository interface" (Since this is on the boundary of the doamin this will be created in the same file as the domain.
 3. Introduce the Adaptor (Stub) "CustomerRepository"
 4. Create the Service Port ("CustomerService interface") + Default implementation
 5. Create a Customer Hndler with a Customer Service
@@ -31,3 +32,37 @@ curl --location --request GET 'localhost:8080/customers' \
 --header 'Content-Type: application/json' | jq
 ```
 
+== Diagrams with PlantUML
+
+.UML Diagram
+image::docs/uml/BankHexArh.png[UML,800]
+
+=== Install pre-requisites
+
+Install goplantuml:
+```
+go get github.com/jfeliu007/goplantuml/parser
+go get github.com/jfeliu007/goplantuml/cmd/goplantuml
+pushd $GOPATH/src/github.com/jfeliu007/goplantuml
+go install ./...
+popd
+```
+
+Install plantuml for MAC:
+```
+brew install plantuml
+```
+
+== REFERENCE MATERIAL
+
+.Hexagonal Architecture
+ - https://www.udemy.com/course/rest-based-microservices-api-development-in-go-lang/
+ - https://medium.com/@iDevoid/stygis-golang-hexagonal-architecture-a2d89d01f84b
+ - https://github.com/iDevoid/stygis
+ - https://threedots.tech/post/introducing-clean-architecture/
+ - https://medium.com/@matiasvarela/hexagonal-architecture-in-go-cfd4e436faa3
+ - https://docs.google.com/drawings/d/1q75-yq7l8cNhTgG2EcqftayQMeS8drAdtyP3OgzFe7Y/edit
+ 
+.PlantUML for GoCode
+ - https://github.com/jfeliu007/goplantuml
+ 

@@ -15,3 +15,5 @@
 # vendor/
 main
 bankHexArch
+.DS_Store
+bin/
