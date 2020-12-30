@@ -15,8 +15,11 @@ func Start() {
 	// Define a Multiplexer
 	router := mux.NewRouter()
 
-	// Wiring
-	ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryStub())}
+	// Wiring (Define Service Instance and Repository Instance)
+	// ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryStub())}
+	ch := CustomerHandlers{
+		service: service.NewCustomerService(domain.NewCustomerRepositoryDb()),
+	}
 
 	// Define Routes
 	router.HandleFunc("/customers", ch.getAllCustomers).Methods(http.MethodGet)

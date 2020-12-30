@@ -13,7 +13,7 @@ Following a Tutorial on Hexagonal architecture using golang
 == Creating Initial Application
 
 .Overview Of initial design
-image::docs/Hexagonal Architecture Implemetation.png[Hexarch,800]
+image::resources/images/Hexagonal_Architecture_Implemetation.png[Hexarch,800]
 
 1. Start at the Domain (domain.customer) and create interface
 2. Introduce the "CustomerRepository interface" (Since this is on the boundary of the doamin this will be created in the same file as the domain.
@@ -35,7 +35,7 @@ curl --location --request GET 'localhost:8080/customers' \
 == Diagrams with PlantUML
 
 .UML Diagram
-image::docs/uml/BankHexArh.png[UML,800]
+image::resources/images/BankHexArh.latest.png[UML,1000]
 
 === Install pre-requisites
 

@@ -23,6 +23,12 @@ namespace domain {
         + FindAll() ([]Customer, error)
 
     }
+    class CustomerRepositoryDb << (S,Aquamarine) >> {
+        - client *sql.DB
+
+        + FindAll() ([]Customer, error)
+
+    }
     class CustomerRepositoryStub << (S,Aquamarine) >> {
         - customers []Customer
 
@@ -31,6 +37,7 @@ namespace domain {
     }
 }
 
+"domain.CustomerRepository" <|-- "domain.CustomerRepositoryDb"
 "domain.CustomerRepository" <|-- "domain.CustomerRepositoryStub"
 
 namespace service {

@@ -11,6 +11,10 @@ run:
 	go run main.go
 
 uml:
-	mkdir -p docs/uml
-	goplantuml -recursive . > docs/uml/BankHexArh.puml
-	plantuml -tpng  docs/uml/BankHexArh.puml
+	mkdir -p resources/uml
+	goplantuml -recursive . > resources/uml/BankHexArh.puml
+	plantuml -tpng resources/uml/BankHexArh.puml
+	mv resources/uml/BankHexArh.png resources/images/BankHexArh.latest.png
+
+startdb:
+	docker-compose -f resources/docker/docker-compose.yml up -d
