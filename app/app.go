@@ -16,6 +16,7 @@ func Start() {
 	router := mux.NewRouter()
 
 	// Wiring (Define Service Instance and Repository Instance)
+
 	// ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryStub())}
 	ch := CustomerHandlers{
 		service: service.NewCustomerService(domain.NewCustomerRepositoryDb()),
@@ -23,6 +24,7 @@ func Start() {
 
 	// Define Routes
 	router.HandleFunc("/customers", ch.getAllCustomers).Methods(http.MethodGet)
+	router.HandleFunc("/customer/{customer_id:[0-9]+}", ch.GetCustomer).Methods(http.MethodGet)
 
 	// Start server
 	log.Fatal(http.ListenAndServe(":8080", router))

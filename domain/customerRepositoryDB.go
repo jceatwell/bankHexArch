@@ -37,6 +37,20 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 	return customers, nil
 }
 
+func (d CustomerRepositoryDb) ById(id string) (*Customer, error) {
+	customerSQL := "select customer_id, name, city, zipcode, date_of_birth, status from customers where customer_id = ?"
+
+	row := d.client.QueryRow(customerSQL, id)
+	var c Customer
+	err := row.Scan(&c.Id, &c.Name, &c.City, &c.Zipcode, &c.DateOfBirth, &c.Status)
+	if err != nil {
+		log.Println("Error while scanning customer " + err.Error())
+		return nil, err
+	}
+
+	return &c, nil
+}
+
 // NewCustomerRepositoryDb : Factory Method
 func NewCustomerRepositoryDb() CustomerRepositoryDb {
 	// TODO: Need to bring in environmental variables

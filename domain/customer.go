@@ -14,4 +14,5 @@ type Customer struct {
 // Note: Anthing defining this protocol should be able to connect to this port
 type CustomerRepository interface {
 	FindAll() ([]Customer, error)
+	ById(string) (*Customer, error)
 }

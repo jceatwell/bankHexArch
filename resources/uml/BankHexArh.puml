@@ -5,6 +5,8 @@ namespace app {
 
         - getAllCustomers(w http.ResponseWriter, r *http.Request) 
 
+        + GetCustomer(w http.ResponseWriter, r *http.Request) 
+
     }
 }
 
@@ -21,12 +23,14 @@ namespace domain {
     }
     interface CustomerRepository  {
         + FindAll() ([]Customer, error)
+        + ById( string) (*Customer, error)
 
     }
     class CustomerRepositoryDb << (S,Aquamarine) >> {
         - client *sql.DB
 
         + FindAll() ([]Customer, error)
+        + ById(id string) (*Customer, error)
 
     }
     class CustomerRepositoryStub << (S,Aquamarine) >> {
@@ -38,17 +42,18 @@ namespace domain {
 }
 
 "domain.CustomerRepository" <|-- "domain.CustomerRepositoryDb"
-"domain.CustomerRepository" <|-- "domain.CustomerRepositoryStub"
 
 namespace service {
     interface CustomerService  {
         + GetAllCustomer() ([]domain.Customer, error)
+        + GetCustomer( string) (*domain.Customer, error)
 
     }
     class DefaultCustomerService << (S,Aquamarine) >> {
         - repo domain.CustomerRepository
 
         + GetAllCustomer() ([]domain.Customer, error)
+        + GetCustomer(id string) (*domain.Customer, error)
 
     }
 }
