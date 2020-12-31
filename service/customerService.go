@@ -1,11 +1,14 @@
 package service
 
-import "github.com/jceatwell/bankHexArch/domain"
+import (
+	"github.com/jceatwell/bankHexArch/domain"
+	"github.com/jceatwell/bankHexArch/errs"
+)
 
 // CustomerService : REST Port interface
 type CustomerService interface {
 	GetAllCustomer() ([]domain.Customer, error)
-	GetCustomer(string) (*domain.Customer, error)
+	GetCustomer(string) (*domain.Customer, *errs.AppError)
 }
 
 // DefaultCustomerService : This is the Business Logic Domain
@@ -19,7 +22,8 @@ func (s DefaultCustomerService) GetAllCustomer() ([]domain.Customer, error) {
 	return s.repo.FindAll()
 }
 
-func (s DefaultCustomerService) GetCustomer(id string) (*domain.Customer, error) {
+// GetCustomer : Receiver function for getCustomer
+func (s DefaultCustomerService) GetCustomer(id string) (*domain.Customer, *errs.AppError) {
 	return s.repo.ById(id)
 }
 

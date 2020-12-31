@@ -6,6 +6,7 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/jceatwell/bankHexArch/errs"
 )
 
 type CustomerRepositoryDb struct {
@@ -37,15 +38,21 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 	return customers, nil
 }
 
-func (d CustomerRepositoryDb) ById(id string) (*Customer, error) {
+func (d CustomerRepositoryDb) ById(id string) (*Customer, *errs.AppError) {
 	customerSQL := "select customer_id, name, city, zipcode, date_of_birth, status from customers where customer_id = ?"
 
 	row := d.client.QueryRow(customerSQL, id)
 	var c Customer
 	err := row.Scan(&c.Id, &c.Name, &c.City, &c.Zipcode, &c.DateOfBirth, &c.Status)
+
 	if err != nil {
 		log.Println("Error while scanning customer " + err.Error())
-		return nil, err
+		switch err {
+		case sql.ErrNoRows:
+			return nil, errs.NewNotFoundError("Customer not found")
+		default:
+			return nil, errs.NewUnexpectedError("Unexpected database error")
+		}
 	}
 
 	return &c, nil

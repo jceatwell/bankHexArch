@@ -1,5 +1,7 @@
 package domain
 
+import "github.com/jceatwell/bankHexArch/errs"
+
 // Customer : Define Business Object
 type Customer struct {
 	Id          string
@@ -14,5 +16,5 @@ type Customer struct {
 // Note: Anthing defining this protocol should be able to connect to this port
 type CustomerRepository interface {
 	FindAll() ([]Customer, error)
-	ById(string) (*Customer, error)
+	ById(string) (*Customer, *errs.AppError)
 }

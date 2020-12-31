@@ -18,3 +18,6 @@ uml:
 
 startdb:
 	docker-compose -f resources/docker/docker-compose.yml up -d
+
+stopdb:
+	docker-compose -f resources/docker/docker-compose.yml down
