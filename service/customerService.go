@@ -7,7 +7,7 @@ import (
 
 // CustomerService : REST Port interface
 type CustomerService interface {
-	GetAllCustomer() ([]domain.Customer, error)
+	GetAllCustomer(string) ([]domain.Customer, *errs.AppError)
 	GetCustomer(string) (*domain.Customer, *errs.AppError)
 }
 
@@ -18,8 +18,16 @@ type DefaultCustomerService struct {
 }
 
 // GetAllCustomer : Receiver function for getAllCutomers
-func (s DefaultCustomerService) GetAllCustomer() ([]domain.Customer, error) {
-	return s.repo.FindAll()
+func (s DefaultCustomerService) GetAllCustomer(status string) ([]domain.Customer, *errs.AppError) {
+	switch status {
+	case "active":
+		status = "1"
+	case "inactive":
+		status = "0"
+	default:
+		status = ""
+	}
+	return s.repo.FindAll(status)
 }
 
 // GetCustomer : Receiver function for getCustomer

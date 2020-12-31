@@ -2,13 +2,9 @@ package app
 
 import (
 	"encoding/json"
-	"encoding/xml"
-	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/jceatwell/bankHexArch/domain"
 	"github.com/jceatwell/bankHexArch/service"
 )
 
@@ -26,25 +22,15 @@ type CustomerHandlers struct {
 
 // getAllCustomers : Handler function for /customers route
 func (ch *CustomerHandlers) getAllCustomers(w http.ResponseWriter, r *http.Request) {
-	// customers := []Customer{
-	// 	{1, "John", "Port Elizabeth", "1234"},
-	// 	{2, "Rob", "Durban", "12222"},
-	// }
 
-	customers, _ := ch.service.GetAllCustomer()
-	log.Println(customers)
+	status := r.URL.Query().Get("status")
 
-	if r.Header.Get("Content-Type") == "application/xml" {
-		w.Header().Add("Content-Type", "application/xml")
-		customerList := struct {
-			XMLName   xml.Name           `xml:"customers"`
-			Customers *[]domain.Customer `xml:"list>customer"`
-		}{Customers: &customers}
+	customers, err := ch.service.GetAllCustomer(status)
 
-		xml.NewEncoder(w).Encode(customerList)
+	if err != nil {
+		writeResponse(w, err.Code, err.AsMessage())
 	} else {
-		w.Header().Add("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(customers)
+		writeResponse(w, http.StatusOK, customers)
 	}
 }
 
@@ -54,10 +40,17 @@ func (ch *CustomerHandlers) GetCustomer(w http.ResponseWriter, r *http.Request) 
 
 	customer, err := ch.service.GetCustomer(id)
 	if err != nil {
-		w.WriteHeader(err.Code)
-		fmt.Fprintf(w, err.Message)
+		writeResponse(w, err.Code, err.AsMessage())
 	} else {
-		w.Header().Add("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(customer)
+		writeResponse(w, http.StatusOK, customer)
 	}
+}
+
+func writeResponse(w http.ResponseWriter, code int, data interface{}) {
+	w.Header().Add("Content-Type", "application/json")
+	w.WriteHeader(code)
+	if err := json.NewEncoder(w).Encode(data); err != nil {
+		panic(err)
+	}
+
 }
