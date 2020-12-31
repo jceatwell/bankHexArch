@@ -2,11 +2,11 @@ package domain
 
 import (
 	"database/sql"
-	"log"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jceatwell/bankHexArch/errs"
+	"github.com/jceatwell/bankHexArch/logger"
 )
 
 type CustomerRepositoryDb struct {
@@ -27,7 +27,7 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError
 	}
 
 	if err != nil {
-		log.Println("Error while querying customer table " + err.Error())
+		logger.Error("Error while querying customer table " + err.Error())
 		return nil, errs.NewUnexpectedError("Unexpected database error")
 	}
 
@@ -37,7 +37,7 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError
 		err := rows.Scan(&c.Id, &c.Name, &c.City, &c.Zipcode, &c.DateOfBirth, &c.Status)
 
 		if err != nil {
-			log.Println("Error while scanning customer " + err.Error())
+			logger.Error("Error while scanning customer " + err.Error())
 			return nil, errs.NewUnexpectedError("Unexpected database error")
 		}
 		customers = append(customers, c)
@@ -54,7 +54,7 @@ func (d CustomerRepositoryDb) ById(id string) (*Customer, *errs.AppError) {
 	err := row.Scan(&c.Id, &c.Name, &c.City, &c.Zipcode, &c.DateOfBirth, &c.Status)
 
 	if err != nil {
-		log.Println("Error while scanning customer " + err.Error())
+		logger.Error("Error while scanning customer " + err.Error())
 		switch err {
 		case sql.ErrNoRows:
 			return nil, errs.NewNotFoundError("Customer not found")

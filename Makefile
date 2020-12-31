@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 tidy:
 	go mod tidy
-	# go mod vendor
+	go mod vendor
 
 build:
 	go mod build
