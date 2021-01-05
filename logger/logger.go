@@ -5,7 +5,9 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-var log *zap.Logger
+var (
+	log *zap.Logger
+)
 
 func init() {
 	var err error

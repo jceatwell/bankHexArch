@@ -2,6 +2,7 @@ package domain
 
 import (
 	"database/sql"
+	"fmt"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -27,7 +28,7 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError
 	}
 
 	if err != nil {
-		logger.Error("Error while querying customer table " + err.Error())
+		logger.Error(fmt.Sprintf("Error while querying customer table %s", err.Error()))
 		return nil, errs.NewUnexpectedError("Unexpected database error")
 	}
 
@@ -37,7 +38,7 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError
 		err := rows.Scan(&c.Id, &c.Name, &c.City, &c.Zipcode, &c.DateOfBirth, &c.Status)
 
 		if err != nil {
-			logger.Error("Error while scanning customer " + err.Error())
+			logger.Error(fmt.Sprintf("Error while scanning customer %s", err.Error()))
 			return nil, errs.NewUnexpectedError("Unexpected database error")
 		}
 		customers = append(customers, c)
@@ -54,7 +55,7 @@ func (d CustomerRepositoryDb) ById(id string) (*Customer, *errs.AppError) {
 	err := row.Scan(&c.Id, &c.Name, &c.City, &c.Zipcode, &c.DateOfBirth, &c.Status)
 
 	if err != nil {
-		logger.Error("Error while scanning customer " + err.Error())
+		logger.Error(fmt.Sprintf("Error while scanning customer %s", err.Error()))
 		switch err {
 		case sql.ErrNoRows:
 			return nil, errs.NewNotFoundError("Customer not found")

@@ -1,5 +1,10 @@
 SHELL := /bin/bash
 
+.EXPORT_ALL_VARIABLES:
+MY_VAR_1 = foo
+MY_VAR_2 = bar
+MY_VAR_3 = baz
+
 tidy:
 	go mod tidy
 	go mod vendor
@@ -9,6 +14,9 @@ build:
 
 run:
 	go run main.go
+
+test:
+	@echo $$MY_VAR_1 $$MY_VAR_2 $$MY_VAR_3
 
 uml:
 	mkdir -p resources/uml
