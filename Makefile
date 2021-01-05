@@ -1,9 +1,14 @@
 SHELL := /bin/bash
 
 .EXPORT_ALL_VARIABLES:
-MY_VAR_1 = foo
-MY_VAR_2 = bar
-MY_VAR_3 = baz
+SERVER_ADDRESS = localhost
+SERVER_PORT = 8000
+DB_USER = root
+DB_PASSWD = codepass
+DB_ADDR = localhost
+DB_PORT = 3306
+DB_NAME = banking
+
 
 tidy:
 	go mod tidy
@@ -15,8 +20,8 @@ build:
 run:
 	go run main.go
 
-test:
-	@echo $$MY_VAR_1 $$MY_VAR_2 $$MY_VAR_3
+test_env:
+	@echo $$SERVER_ADDRESS $$SERVER_PORT
 
 uml:
 	mkdir -p resources/uml

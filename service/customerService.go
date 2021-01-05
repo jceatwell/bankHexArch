@@ -2,13 +2,14 @@ package service
 
 import (
 	"github.com/jceatwell/bankHexArch/domain"
+	"github.com/jceatwell/bankHexArch/dto"
 	"github.com/jceatwell/bankHexArch/errs"
 )
 
 // CustomerService : REST Port interface
 type CustomerService interface {
-	GetAllCustomer(string) ([]domain.Customer, *errs.AppError)
-	GetCustomer(string) (*domain.Customer, *errs.AppError)
+	GetAllCustomer(string) ([]dto.CustomerResponse, *errs.AppError)
+	GetCustomer(string) (*dto.CustomerResponse, *errs.AppError)
 }
 
 // DefaultCustomerService : This is the Business Logic Domain
@@ -18,7 +19,7 @@ type DefaultCustomerService struct {
 }
 
 // GetAllCustomer : Receiver function for getAllCutomers
-func (s DefaultCustomerService) GetAllCustomer(status string) ([]domain.Customer, *errs.AppError) {
+func (s DefaultCustomerService) GetAllCustomer(status string) ([]dto.CustomerResponse, *errs.AppError) {
 	switch status {
 	case "active":
 		status = "1"
@@ -27,12 +28,27 @@ func (s DefaultCustomerService) GetAllCustomer(status string) ([]domain.Customer
 	default:
 		status = ""
 	}
-	return s.repo.FindAll(status)
+
+	customers, err := s.repo.FindAll(status)
+	if err != nil {
+		return nil, err
+	}
+	response := make([]dto.CustomerResponse, len(customers))
+	for i, c := range customers {
+		response[i] = c.ToDto()
+	}
+	return response, nil
+
 }
 
 // GetCustomer : Receiver function for getCustomer
-func (s DefaultCustomerService) GetCustomer(id string) (*domain.Customer, *errs.AppError) {
-	return s.repo.ById(id)
+func (s DefaultCustomerService) GetCustomer(id string) (*dto.CustomerResponse, *errs.AppError) {
+	c, err := s.repo.ById(id)
+	if err != nil {
+		return nil, err
+	}
+	response := c.ToDto()
+	return &response, nil
 }
 
 // NewCustomerService : factory helper funvyin to create default Customer REST Service
