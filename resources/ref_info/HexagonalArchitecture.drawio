@@ -1,0 +1,195 @@
+<mxfile host="65bd71144e" modified="2021-01-06T21:02:21.205Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="pdRAj6WxSf1nptZa4vfQ" version="13.10.0" type="embed">
+    <diagram id="Cm9LDzZHHS9jeX5QfSym" name="Page-1">
+        <mxGraphModel dx="2506" dy="2168" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-1" value="service" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="999" y="50" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-4" value="data transfer object" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="525" y="50" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-6" value="domain&lt;br&gt;object" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1380" y="50" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-7" value="app" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="50" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-11" value="AccountHandler" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="25" y="120" width="310" height="84" as="geometry">
+                        <mxRectangle x="120" y="140" width="130" height="26" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-12" value="- service: service.AccountService" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-11" vertex="1">
+                    <mxGeometry y="26" width="310" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-11" vertex="1">
+                    <mxGeometry y="50" width="310" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-14" value="+ NewAccount(w http.ResponseWriter, r *http.Request)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-11" vertex="1">
+                    <mxGeometry y="58" width="310" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-29" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;AccountService&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;+ NewAccount(dto.NewAccountRequest):&amp;nbsp;(*dto.NewAccountResponse, *errs.AppError)&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="757" y="120" width="483.5" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.004;entryY=0.285;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="vM1DXY1uvsAfXWSCpuIt-12" target="vM1DXY1uvsAfXWSCpuIt-29" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-32" value="Implements + Requires" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vM1DXY1uvsAfXWSCpuIt-31" vertex="1" connectable="0">
+                    <mxGeometry x="0.0007" y="2" relative="1" as="geometry">
+                        <mxPoint x="-1" y="1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-34" value="Account" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fad9d5;strokeColor=#ae4132;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1290" y="200" width="330" height="112" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-35" value="+ AccountId: string&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-34" vertex="1">
+                    <mxGeometry y="26" width="330" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-38" value="+ AccountType: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-34" vertex="1">
+                    <mxGeometry y="52" width="330" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-36" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-34" vertex="1">
+                    <mxGeometry y="78" width="330" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-37" value="+ ToNewAccountResponseDto(): dto.NewAccountResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-34" vertex="1">
+                    <mxGeometry y="86" width="330" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-39" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;AccountRepository&lt;/b&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;+ Save(Account) (*Account, *errs.AppError)&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="1749.5" y="330" width="243" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=0;" parent="1" source="vM1DXY1uvsAfXWSCpuIt-40" target="vM1DXY1uvsAfXWSCpuIt-39" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="vM1DXY1uvsAfXWSCpuIt-40" target="vM1DXY1uvsAfXWSCpuIt-46" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-75" value="Creates" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vM1DXY1uvsAfXWSCpuIt-74" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0476" y="-2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-40" value="AccountRespositoryDb" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1706" y="520" width="330" height="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-41" value="+ client: *sqlx.DB&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-40" vertex="1">
+                    <mxGeometry y="26" width="330" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-43" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-40" vertex="1">
+                    <mxGeometry y="52" width="330" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-44" value="+ Save(Account): (*Account, *errs.AppError)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-40" vertex="1">
+                    <mxGeometry y="60" width="330" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-46" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;package&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;domain&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;+&amp;nbsp;NewAccountRespositoryDb(dbClient *sqlx.DB) AccountRespositoryDb&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="1671" y="695" width="400" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-49" value="NewAccountRequest" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="200" width="330" height="112" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-50" value="+ AccountType: string&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-49" vertex="1">
+                    <mxGeometry y="26" width="330" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-51" value="+ Amount: float64" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-49" vertex="1">
+                    <mxGeometry y="52" width="330" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-52" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-49" vertex="1">
+                    <mxGeometry y="78" width="330" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-53" value="+ Validate(): *errs.AppError" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-49" vertex="1">
+                    <mxGeometry y="86" width="330" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-54" value="NewAccountResponse" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fad9d5;strokeColor=#ae4132;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="340" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-55" value="+ AccountId: string&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-54" vertex="1">
+                    <mxGeometry y="26" width="330" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-57" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-54" vertex="1">
+                    <mxGeometry y="52" width="330" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-59" value="" style="shape=link;html=1;endArrow=classic;endFill=1;" parent="1" edge="1">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="10" y="90" as="sourcePoint"/>
+                        <mxPoint x="2000" y="90" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=diamond;startFill=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="vM1DXY1uvsAfXWSCpuIt-61" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1600" y="380" as="sourcePoint"/>
+                        <mxPoint x="1751" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-76" value="Contains / Requires" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vM1DXY1uvsAfXWSCpuIt-64" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1641" y="-1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=block;endFill=0;" parent="1" source="vM1DXY1uvsAfXWSCpuIt-60" target="vM1DXY1uvsAfXWSCpuIt-29" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="vM1DXY1uvsAfXWSCpuIt-60" target="vM1DXY1uvsAfXWSCpuIt-67" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-73" value="Creates" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vM1DXY1uvsAfXWSCpuIt-72" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2263" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-60" value="DefaultAccountService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="759" y="341" width="480" height="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-61" value="+ repo: domain.AccountRepository&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-60" vertex="1">
+                    <mxGeometry y="26" width="480" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-62" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-60" vertex="1">
+                    <mxGeometry y="52" width="480" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-63" value="+ NewAccount(dto.NewAccountRequest): (*dto.NewAccountResponse, *errs.AppError)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="vM1DXY1uvsAfXWSCpuIt-60" vertex="1">
+                    <mxGeometry y="60" width="480" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-66" value="domain" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1830" y="50" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-67" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;package&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;service&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;+&amp;nbsp;NewAccountService(repo domain.AccountRepository): DefaultAccountService&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="782.25" y="550" width="433" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" parent="1" source="vM1DXY1uvsAfXWSCpuIt-77" target="vM1DXY1uvsAfXWSCpuIt-46" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-80" value="STEP 2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vM1DXY1uvsAfXWSCpuIt-78" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0395" y="-1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.001;entryY=0.558;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" parent="1" source="vM1DXY1uvsAfXWSCpuIt-77" target="vM1DXY1uvsAfXWSCpuIt-67" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-83" value="STEP 3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vM1DXY1uvsAfXWSCpuIt-82" vertex="1" connectable="0">
+                    <mxGeometry x="0.5331" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-84" value="STEP 4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.361;entryY=0.962;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" parent="1" source="vM1DXY1uvsAfXWSCpuIt-77" target="vM1DXY1uvsAfXWSCpuIt-14" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-77" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;package&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;app&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;+&amp;nbsp;Start()&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;+ getDBClient(): *sqlx.DB&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="690" width="433" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="vM1DXY1uvsAfXWSCpuIt-81" value="&lt;h1&gt;Start() Creates Instance of AccountHandler&lt;/h1&gt;&lt;div&gt;1. Create DB Client (getDBClient)&lt;/div&gt;&lt;div&gt;2. Create accountRespository (with sqlx.DB from Step 1)&lt;/div&gt;&lt;div&gt;3. Create Instance of AccountService using Step 2&lt;/div&gt;&lt;div&gt;4. Create Instance of AccountHandler injecting AccountService Step 3)&lt;/div&gt;&lt;div&gt;5. Add Routerwith Step 4 as handler function)&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-96" y="820" width="510" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="&lt;h1&gt;User Side&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="-70" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;h1&gt;Business Side&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="929" y="-70" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;h1&gt;Server Side&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1780" y="-70" width="160" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

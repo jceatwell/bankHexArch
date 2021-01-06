@@ -1,5 +1,13 @@
 @startuml
 namespace app {
+
+    class app << package >> {
+        ~ sanityChecks()
+        + Start()
+        ~ getDbClient(): *sqlx.DB 
+        ~ writeResponse(w http.ResponseWriter, code int, data interface{})
+    }
+
     class AccountHandler << (S,Aquamarine) >> {
         - service service.AccountService
 
@@ -18,7 +26,12 @@ namespace app {
 
 
 namespace domain {
-    interface AccoungRepository  {
+    
+    class domain << package >> {
+        + NewAccountRespositoryDb(dbClient *sqlx.DB): AccountRespositoryDb 
+    }
+
+    interface AccountRepository  {
         + Save( Account) (*Account, *errs.AppError)
 
     }
@@ -72,7 +85,7 @@ namespace domain {
     }
 }
 
-"domain.AccoungRepository" <|-- "domain.AccountRespositoryDb"
+"domain.AccountRepository" <|-- "domain.AccountRespositoryDb"
 "domain.CustomerRepository" <|-- "domain.CustomerRepositoryDb"
 
 namespace dto {
@@ -122,7 +135,7 @@ namespace service {
 
     }
     class DefaultAccountService << (S,Aquamarine) >> {
-        - repo domain.AccoungRepository
+        - repo domain.AccountRepository
 
         + NewAccount(req dto.NewAccountRequest) (*dto.NewAccountResponse, *errs.AppError)
 

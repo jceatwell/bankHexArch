@@ -20,6 +20,6 @@ func (a Account) ToNewAccountResponseDto() dto.NewAccountResponse {
 	}
 }
 
-type AccoungRepository interface {
+type AccountRepository interface {
 	Save(Account) (*Account, *errs.AppError)
 }

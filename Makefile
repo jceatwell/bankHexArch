@@ -23,9 +23,12 @@ run:
 test_env:
 	@echo $$SERVER_ADDRESS $$SERVER_PORT
 
+uml_overview:
+	plantuml -tpng resources/uml/Overview_Hex_architecture.puml
+
 uml:
 	mkdir -p resources/uml
-	goplantuml -recursive . > resources/uml/BankHexArh.puml
+	goplantuml -aggregate-private-members -show-aliases -show-compositions -recursive . > resources/uml/BankHexArh.puml
 	plantuml -tpng resources/uml/BankHexArh.puml
 	mv resources/uml/BankHexArh.png resources/images/BankHexArh.latest.png
 
