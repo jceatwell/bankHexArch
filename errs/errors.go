@@ -15,14 +15,21 @@ func (e AppError) AsMessage() *AppError {
 
 func NewNotFoundError(message string) *AppError {
 	return &AppError{
-		Message: message,
 		Code:    http.StatusNotFound,
+		Message: message,
 	}
 }
 
 func NewUnexpectedError(message string) *AppError {
 	return &AppError{
-		Message: message,
 		Code:    http.StatusInternalServerError,
+		Message: message,
+	}
+}
+
+func NewValidationError(message string) *AppError {
+	return &AppError{
+		Code:    http.StatusUnprocessableEntity,
+		Message: message,
 	}
 }

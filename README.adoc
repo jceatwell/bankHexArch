@@ -30,6 +30,13 @@ curl --location --request GET 'localhost:8080/customers' \
 
 curl --location --request GET 'localhost:8080/customers' \
 --header 'Content-Type: application/json' | jq
+
+curl --location --request POST 'localhost:8000 /customer/2001/account' \
+--header 'Content-Type: application/xml' \
+--data-raw '{
+    "account_type": "saving",
+    "amount": 5000.23
+}'
 ```
 
 == Diagrams with PlantUML
