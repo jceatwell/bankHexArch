@@ -22,7 +22,6 @@ type CustomerHandlers struct {
 
 // getAllCustomers : Handler function for /customers route
 func (ch *CustomerHandlers) getAllCustomers(w http.ResponseWriter, r *http.Request) {
-
 	status := r.URL.Query().Get("status")
 
 	customers, err := ch.service.GetAllCustomer(status)

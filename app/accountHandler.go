@@ -6,6 +6,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/jceatwell/bankHexArch/dto"
+	"github.com/jceatwell/bankHexArch/logger"
 	"github.com/jceatwell/bankHexArch/service"
 )
 
@@ -14,12 +15,12 @@ type AccountHandler struct {
 }
 
 func (h *AccountHandler) NewAccount(w http.ResponseWriter, r *http.Request) {
+	// Retrieve request parameter customer_id
 	vars := mux.Vars(r)
 	customerId := vars["customer_id"]
 
 	var request dto.NewAccountRequest
-	err := json.NewDecoder(r.Body).Decode(&request)
-	if err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
 		writeResponse(w, http.StatusBadRequest, err.Error())
 	} else {
 		request.CustomerId = customerId
@@ -30,4 +31,34 @@ func (h *AccountHandler) NewAccount(w http.ResponseWriter, r *http.Request) {
 			writeResponse(w, http.StatusCreated, account)
 		}
 	}
+}
+
+func (h *AccountHandler) MakeTransaction(w http.ResponseWriter, r *http.Request) {
+
+	logger.Info("MakeTransaction called")
+	// Retrieve request parameters account_id + customer_id
+	vars := mux.Vars(r)
+	accountId := vars["account_id"]
+	customerId := vars["customer_id"]
+
+	// Decode incoming request
+	var request dto.TransactionRequest
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		writeResponse(w, http.StatusBadRequest, err.Error())
+	} else {
+
+		// Build request object
+		request.AccountId = accountId
+		request.CustomerId = customerId
+
+		// Perform transaction
+		account, appError := h.service.MakeTransaction(request)
+
+		if appError != nil {
+			writeResponse(w, appError.Code, appError.Message)
+		} else {
+			writeResponse(w, http.StatusCreated, account)
+		}
+	}
+
 }

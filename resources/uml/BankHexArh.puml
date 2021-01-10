@@ -4,6 +4,7 @@ namespace app {
         - service service.AccountService
 
         + NewAccount(w http.ResponseWriter, r *http.Request) 
+        + MakeTransaction(w http.ResponseWriter, r *http.Request) 
 
     }
     class CustomerHandlers << (S,Aquamarine) >> {
@@ -18,25 +19,30 @@ namespace app {
 
 
 namespace domain {
-    interface AccoungRepository  {
-        + Save( Account) (*Account, *errs.AppError)
-
-    }
     class Account << (S,Aquamarine) >> {
         + AccountId string
         + CustomerId string
-        + OpenDate string
+        + OpeningDate string
         + AccountType string
-        + Amount string
+        + Amount float64
         + Status string
 
         + ToNewAccountResponseDto() dto.NewAccountResponse
+        + CanWithdraw(amount float64) bool
 
     }
-    class AccountRespositoryDb << (S,Aquamarine) >> {
+    interface AccountRepository  {
+        + Save( Account) (*Account, *errs.AppError)
+        + SaveTransaction(transaction Transaction) (*Transaction, *errs.AppError)
+        + FindBy(accountId string) (*Account, *errs.AppError)
+
+    }
+    class AccountRepositoryDb << (S,Aquamarine) >> {
         - client *sqlx.DB
 
         + Save(a Account) (*Account, *errs.AppError)
+        + SaveTransaction(t Transaction) (*Transaction, *errs.AppError)
+        + FindBy(accountId string) (*Account, *errs.AppError)
 
     }
     class Customer << (S,Aquamarine) >> {
@@ -70,9 +76,20 @@ namespace domain {
         + FindAll() ([]Customer, error)
 
     }
+    class Transaction << (S,Aquamarine) >> {
+        + TransactionId string
+        + AccountId string
+        + Amount float64
+        + TransactionType string
+        + TransactionDate string
+
+        + IsWithdrawal() bool
+        + ToDto() dto.TransactionResponse
+
+    }
 }
 
-"domain.AccoungRepository" <|-- "domain.AccountRespositoryDb"
+"domain.AccountRepository" <|-- "domain.AccountRepositoryDb"
 "domain.CustomerRepository" <|-- "domain.CustomerRepositoryDb"
 
 namespace dto {
@@ -97,6 +114,26 @@ namespace dto {
         + AccountId string
 
     }
+    class TransactionRequest << (S,Aquamarine) >> {
+        + AccountId string
+        + Amount float64
+        + TransactionType string
+        + TransactionDate string
+        + CustomerId string
+
+        + IsTransactionTypeWithdrawal() bool
+        + IsTransactionTypeDeposit() bool
+        + Validate() *errs.AppError
+
+    }
+    class TransactionResponse << (S,Aquamarine) >> {
+        + TransactionId string
+        + AccountId string
+        + Amount float64
+        + TransactionType string
+        + TransactionDate string
+
+    }
 }
 
 
@@ -114,6 +151,7 @@ namespace errs {
 namespace service {
     interface AccountService  {
         + NewAccount( dto.NewAccountRequest) (*dto.NewAccountResponse, *errs.AppError)
+        + MakeTransaction( dto.TransactionRequest) (*dto.TransactionResponse, *errs.AppError)
 
     }
     interface CustomerService  {
@@ -122,9 +160,10 @@ namespace service {
 
     }
     class DefaultAccountService << (S,Aquamarine) >> {
-        - repo domain.AccoungRepository
+        - repo domain.AccountRepository
 
         + NewAccount(req dto.NewAccountRequest) (*dto.NewAccountResponse, *errs.AppError)
+        + MakeTransaction(req dto.TransactionRequest) (*dto.TransactionResponse, *errs.AppError)
 
     }
     class DefaultCustomerService << (S,Aquamarine) >> {

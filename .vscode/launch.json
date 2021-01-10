@@ -10,7 +10,15 @@
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}",
-            "env": {},
+            "env": {
+                "SERVER_ADDRESS" : "localhost",
+                "SERVER_PORT" :  "8000",
+                "DB_USER" :  "root",
+                "DB_PASSWD" :  "codepass",
+                "DB_ADDR" :  "localhost",
+                "DB_PORT" :  "3306",
+                "DB_NAME" :  "banking"
+            },
             "args": [],
             "showLog": true
         }
